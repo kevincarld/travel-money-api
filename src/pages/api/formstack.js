@@ -5,7 +5,7 @@ import Cors from 'cors'
 // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
 const cors = Cors({
   methods: ['POST'],
-  origin: ['brandedcontent.nine.com.au'],
+  origin: /^https?:\/\/nine\.com.au(:\d+)?$/i // Allow only nine.com.au
 })
 
 // Helper method to wait for a middleware to execute before continuing
@@ -35,7 +35,7 @@ export default async function handler(req, res) {
       headers: {
         accept: 'application/json',
         "Content-Type": "application/json; charset=utf-8",
-        "Authorization": "Bearer 154935645fdd40d88096faa4eeaf8999"
+        "Authorization": `Bearer ${process.env.FORMSTACK_AUTH}`
       },
       body: JSON.stringify(body),
     };
