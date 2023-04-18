@@ -5,7 +5,7 @@ import Cors from 'cors'
 // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
 const cors = Cors({
   methods: ['POST'],
-  origin: /^https?:\/\/nine\.com.au(:\d+)?$/i // Allow only nine.com.au
+  origin: /^https?:\/\/([^.]+\.)?nine\.com\.au(:\d+)?$/i // Allow only nine.com.au
 })
 
 // Helper method to wait for a middleware to execute before continuing
