@@ -25,10 +25,9 @@ function runMiddleware( req, res, fn ) {
 export default async function handler(req, res) {
   const { body, method } = req;
 
-  // Run the middleware
+  // Run the middleware to check if the request is allowed (from origin *.nine.com.au)
   await runMiddleware(req, res, cors)
 
-  // Extract the email and captcha code from the request body
   if (method === "POST") {
     const config = {
       method: "POST",
@@ -51,7 +50,7 @@ export default async function handler(req, res) {
 
     // Return 404 if someone pings the API with a method other than
     // POST
-    return res.status(404).send("Invalid request sir");
+    return res.status(404).send("Invalid request sir!");
   }
 
 }
